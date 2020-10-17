@@ -9,7 +9,8 @@ USE_RELOADER = False
 ENV = 'development'
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
-STATIC_FOLDER = os.path.join(BASE_DIR, "static")
+#STATIC_FOLDER = os.path.join(BASE_DIR, "static")
+STATIC_FOLDER = 'static/'
 
 ## EDMQ CONFIG
 
