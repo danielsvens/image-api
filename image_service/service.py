@@ -61,7 +61,7 @@ class ImageService:
 
     @staticmethod
     def build_url(filename, host):
-        return f'{host}/static/{filename}'
+        return f'{host}static/{filename}'
 
     @staticmethod
     def allowed_file(filename):
