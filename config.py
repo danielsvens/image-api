@@ -10,7 +10,7 @@ ENV = 'development'
 
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg'}
 #STATIC_FOLDER = os.path.join(BASE_DIR, "static")
-STATIC_FOLDER = 'static/'
+STATIC_FOLDER = os.path.join('/var/www', 'static/')
 
 ## EDMQ CONFIG
 
