@@ -15,7 +15,7 @@ def upload_image():
         return make_response('image not found in request', 400)
 
     file = request.files['image']
-    response = img_service.image_handler(file)
+    response = img_service.image_handler(request, file)
 
     return make_response(jsonify(response), 200)
 
@@ -29,3 +29,10 @@ def get_image(image_id):
 
     serialized = image_schema.dump(image)
     return make_response(jsonify(serialized), 200)
+
+
+@app.route('/v1/image/edmq', methods=['POST'])
+def send_edmq_msg():
+    #data = img_service.send_created_event(request.json)
+    #return make_response(jsonify(data), 404)
+    return make_response('Not implemented', 400)
