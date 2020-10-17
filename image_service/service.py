@@ -22,7 +22,7 @@ class ImageService:
 
         filename = self.generate_filename(file.filename)
         self.save_file(file, filename)
-        url = self.build_url(filename, request.host)
+        url = self.build_url(filename, request.host_url)
         image_id = self.save_to_db(url, file, filename)
 
         return {'id': image_id, 'url': url}
@@ -61,7 +61,7 @@ class ImageService:
 
     @staticmethod
     def build_url(filename, host):
-        return f'http://{host}:{app.config["PORT"]}/static/{filename}'
+        return f'{host}/static/{filename}'
 
     @staticmethod
     def allowed_file(filename):

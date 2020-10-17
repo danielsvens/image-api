@@ -7,7 +7,7 @@ class Image(db.Model):
     __tablename__ = 'image'
 
     id = db.Column(db.Integer, primary_key=True)
-    uri = db.Column(db.String(64))
+    uri = db.Column(db.String(255))
     file_type = db.Column(db.String(255))
     name = db.Column(db.String(255))
     description = db.Column(db.Text())
