@@ -1,7 +1,7 @@
 from flask import jsonify, request, make_response
 from image_service import app
-from image_service.models import ImageSchema, Image
-from image_service.service import ImageService
+from image_service.model.models import ImageSchema, Image
+from image_service.application.image import ImageService
 
 
 image_schema = ImageSchema()
@@ -29,10 +29,3 @@ def get_image(image_id):
 
     serialized = image_schema.dump(image)
     return make_response(jsonify(serialized), 200)
-
-
-@app.route('/v1/image/edmq', methods=['POST'])
-def send_edmq_msg():
-    #data = img_service.send_created_event(request.json)
-    #return make_response(jsonify(data), 404)
-    return make_response('Not implemented', 400)

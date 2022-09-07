@@ -23,7 +23,7 @@ class Image(db.Model):
         self.file_path = data.get('file_path')
 
     def save_image(self):
-        assert self.id is None
+        assert self.id is None, 'Id must be None'
 
         db.session.add(self)
         db.session.commit()
