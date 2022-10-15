@@ -5,9 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Get project
-RUN apt-get install git
-RUN git config --global http.sslVerify false
-RUN git clone https://github.com/danielsvens/image-api.git
+COPY . /app/image-api
 
 # Fix static folder and permissions
 WORKDIR /usr/src/app/image-api/
