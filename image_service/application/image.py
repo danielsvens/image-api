@@ -3,12 +3,11 @@ import string
 import random
 import hashlib
 
-from imghdr import tests as image_tests
 from pathlib import Path
 from image_service import app
 from image_service.model.models import Image
 from werkzeug.utils import secure_filename
-from werkzeug.datastructures import FileStorage, BytesIO
+from werkzeug.datastructures import FileStorage
 
 
 class ImageService:
@@ -50,7 +49,6 @@ class ImageService:
         while n := file.stream.read(buffer):
             h.update(n)
 
-        file.stream.close()
         return int(h.hexdigest(), 32)
 
     @staticmethod
