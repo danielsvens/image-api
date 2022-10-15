@@ -9,6 +9,6 @@ app.config.from_object(config)
 db = SQLAlchemy(app)
 
 from image_service.model.models import Image
-db.create_all()
+#db.create_all()
 
 from image_service.rest import routes
