@@ -5,7 +5,7 @@ RUN mkdir -p /usr/src/app
 WORKDIR /usr/src/app
 
 # Get project
-COPY . /app/image-api
+COPY . /usr/src/app/image-api
 
 # Fix static folder and permissions
 WORKDIR /usr/src/app/image-api/
