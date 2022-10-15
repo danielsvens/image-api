@@ -25,8 +25,8 @@ class ImageService:
             return 'error'
 
         self.file_ending = Path(file.filename).suffix
-        seed = self._generate_seed(file)
-        filename = self.generate_filename(seed)
+        #seed = self._generate_seed(file)
+        filename = self.generate_filename(0)
         self.save_file(file, filename)
         url = self.build_url(filename, request.host_url)
         image_id = self.save_to_db(url, file, filename)
@@ -34,7 +34,8 @@ class ImageService:
         return {'id': image_id, 'url': url}
 
     def generate_filename(self, seed: int):
-        random.seed(seed)
+        if seed != 0:
+            random.seed(seed)
         filename = ''.join(random.choice(self.letters) for _ in range(40))
 
         return filename + self.file_ending
@@ -43,8 +44,6 @@ class ImageService:
     def _generate_seed(file: FileStorage):
         h  = hashlib.sha256()
         buffer = 65536
-
-        print(f'is closed ?: {file.stream.closed}')
         
         while n := file.stream.read(buffer):
             h.update(n)
