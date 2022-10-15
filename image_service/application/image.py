@@ -38,12 +38,12 @@ class ImageService:
         return filename + self.file_ending
 
     @staticmethod
-    def _generate_seed(filename):
+    def _generate_seed(file):
         h  = hashlib.sha256()
         b  = bytearray(128 * 1024)
         mv = memoryview(b)
         
-        with open(filename, 'rb', buffering=0) as f:
+        with open(file.filename, 'rb', buffering=0) as f:
             while n := f.readinto(mv):
                 h.update(mv[:n])
 
