@@ -22,16 +22,16 @@ class ImageService:
         if not self.validate_file(file):
             return 'error'
 
-        self.file_ending = self.get_file_type(file)
+        self.file_ending = f'.{self.get_file_type(file)}'
         seed = self._generate_seed(file)
-        filename = self.generate_filename(file.filename, seed)
+        filename = self.generate_filename(seed)
         self.save_file(file, filename)
         url = self.build_url(filename, request.host_url)
         image_id = self.save_to_db(url, file, filename)
 
         return {'id': image_id, 'url': url}
 
-    def generate_filename(self, name, seed: int):
+    def generate_filename(self, seed: int):
         random.seed(seed)
         filename = ''.join(random.choice(self.letters) for _ in range(40))
 
