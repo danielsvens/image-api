@@ -18,3 +18,4 @@ RUN pip install -r requirements.txt
 # Setup environment variables
 ENV STATIC_PATH /var/www/static
 ENV UWSGI_INI /usr/src/app/image-api/uwsgi.ini
+ENV LISTEN_PORT 8082

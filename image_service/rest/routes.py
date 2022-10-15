@@ -10,12 +10,14 @@ img_service = ImageService()
 
 @app.route('/v1/image/upload', methods=['POST'])
 def upload_image():
-
     if 'image' not in request.files:
-        return make_response('image not found in request', 400)
+        return make_response('', 404)
 
     file = request.files['image']
     response = img_service.image_handler(request, file)
+
+    if response == 'error':
+        return make_response('', 404)
 
     return make_response(jsonify(response), 200)
 

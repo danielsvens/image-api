@@ -32,10 +32,10 @@ class Image(db.Model):
 
     @classmethod
     def get_image(cls, image_id):
-        return cls.query.get(image_id)
+        return cls.query.get(image_id) if isinstance(image_id, int) else None
 
     def __repr__(self):
-        return '<{}: {}>'.format(self.__class__.__name__, self.id)
+        return f'<{self.__class__.__name__}: {self.id}>'
 
 
 class ImageSchema(Schema):
